@@ -18,3 +18,7 @@
 
 - YamahaMonochrome 最终主片：H.264/AAC、1920×1080、30 fps、3846 帧、128.2 秒；字幕与已确认配音保留，音量规范至目标 -16 LUFS。
 - 源码、依赖锁文件、字体许可与生成素材已提交；全 Git 历史及跟踪文件的绑定凭证/签名扫描通过。
+
+## BGM 更新
+
+采用已核实来源的 Cipher / Kevin MacLeod（CC BY 3.0），剪辑、EQ、自动 ducking 和淡入淡出均记于 public/audio/mix-record.json。人声、字幕和 128.2 秒章节时间不变，片尾及 public/audio/CREDITS.txt 保留署名。Remotion lint 和 build 通过。

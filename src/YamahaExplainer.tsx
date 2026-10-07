@@ -858,6 +858,7 @@ const Chapter: React.FC<{ scene: (typeof scenes)[number] }> = ({ scene }) => {
 export const YamahaMonochrome: React.FC = () => (
   <AbsoluteFill>
     <FontStyles />
+    <Audio src={staticFile("audio/it-summit-bgm-ducked.wav")} />
     {scenes.map((scene) => (
       <Sequence
         key={scene.id}
@@ -870,5 +871,21 @@ export const YamahaMonochrome: React.FC = () => (
         </Sequence>
       </Sequence>
     ))}
+
+    <Sequence from={3726} durationInFrames={120}>
+      <svg
+        viewBox="0 0 1280 720"
+        width="100%"
+        height="100%"
+        style={{ position: "absolute", pointerEvents: "none" }}
+      >
+        <Label x={1237} y={78} size={9} fill="#aeb3b9" anchor="end">
+          Music: Cipher — Kevin MacLeod (incompetech.com)
+        </Label>
+        <Label x={1237} y={90} size={9} fill="#aeb3b9" anchor="end">
+          CC BY 3.0 · creativecommons.org/licenses/by/3.0/
+        </Label>
+      </svg>
+    </Sequence>
   </AbsoluteFill>
 );

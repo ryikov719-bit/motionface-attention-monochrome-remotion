@@ -1,0 +1,6 @@
+Music: "Cipher" by Kevin MacLeod (incompetech.com)
+Source: https://incompetech.com/music/royalty-free/index.html?Search=Search&isrc=USUAN1100844
+Download: https://incompetech.com/music/royalty-free/mp3-royaltyfree/Cipher2.mp3
+Licensed under Creative Commons Attribution 3.0:
+https://creativecommons.org/licenses/by/3.0/
+Changes: excerpt to 128.2 seconds, EQ for speech, volume reduction, narration-driven ducking, fade-in and fade-out.

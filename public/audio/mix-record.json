@@ -1,0 +1,30 @@
+{
+  "music": "Cipher",
+  "composer": "Kevin MacLeod",
+  "license": "CC BY 3.0",
+  "duration": 128.2,
+  "sample_rate": 48000,
+  "channels": 2,
+  "voice": "existing approved narration; timing unchanged",
+  "mix": {
+    "bed_loudness_before_duck": "-29 LUFS",
+    "bed_final_gain": 1.6,
+    "highpass_hz": 100,
+    "eq": {
+      "frequency_hz": 2200,
+      "gain_db": -5,
+      "Q": 0.8
+    },
+    "ducking": {
+      "threshold": 0.025,
+      "ratio": 4,
+      "attack_ms": 20,
+      "release_ms": 650
+    },
+    "fade_in_s": 1.2,
+    "fade_out_start_s": 123.7,
+    "fade_out_s": 4.5,
+    "final_target_lufs": -16,
+    "true_peak_ceiling_db": -1.5
+  }
+}
