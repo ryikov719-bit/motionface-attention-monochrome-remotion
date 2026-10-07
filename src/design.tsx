@@ -2,14 +2,14 @@ import React from "react";
 import { interpolate, staticFile } from "remotion";
 import { IconAsset } from "./IconAsset";
 export const palette = {
-  paper: "#08090a",
+  paper: "#080b10",
   ink: "#ededed",
-  orange: "#727679",
-  yellow: "#343638",
-  mint: "#30383a",
+  orange: "#69d8e8",
+  yellow: "#193642",
+  mint: "#16372d",
   pink: "#39363a",
   violet: "#363a40",
-  muted: "#aaaeb3",
+  muted: "#9aadb9",
 };
 export const progress = (t: number, a: number, b: number) =>
   interpolate(t, [a, b], [0, 1], {
@@ -48,9 +48,9 @@ export const InkBox: React.FC<{
     <g>
       <defs>
         <linearGradient id={id} x2=".8" y2="1">
-          <stop stopColor="#25292e" />
+          <stop stopColor="#20303c" />
           <stop offset=".32" stopColor={normalized} />
-          <stop offset="1" stopColor="#101112" />
+          <stop offset="1" stopColor="#0d131b" />
         </linearGradient>
       </defs>
       <rect
@@ -60,7 +60,7 @@ export const InkBox: React.FC<{
         height={h}
         rx={radius}
         fill={`url(#${id})`}
-        stroke="#3b4147"
+        stroke="#344954"
         strokeWidth={0.7}
       />
       <path

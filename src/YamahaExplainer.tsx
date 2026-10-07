@@ -1,3 +1,4 @@
+import { SceneBackdrop, InputDetails } from "./VisualTheme";
 import { IconAsset } from "./IconAsset";
 import { AIInputPanel } from "./AIInput";
 import React from "react";
@@ -176,7 +177,7 @@ const DataResult: React.FC<{ t: number }> = ({ t }) => (
     <Label x={1087} y={184} anchor="end" size={16}>
       ✓ 校验完成
     </Label>
-    <path d="M304 199h792" stroke="#ddd5b5" />
+    <path d="M304 199h792" stroke="#536b79" />
     {["设备清单", "汇总图表", "异常记录"].map((v, i) => (
       <g key={v}>
         <InkBox
@@ -327,7 +328,7 @@ const PPTResult: React.FC<{ t: number; guide: boolean }> = ({ t, guide }) => {
       <Label x={1108} y={176} size={16} anchor="end">
         {page + 1} / {guide ? 10 : 8} 页 · 初稿
       </Label>
-      <path d="M291 190h820" stroke="#d7cfb3" />
+      <path d="M291 190h820" stroke="#597383" />
       {[0, 1, 2, 3].map((i) => (
         <g key={i}>
           <InkBox
@@ -335,7 +336,7 @@ const PPTResult: React.FC<{ t: number; guide: boolean }> = ({ t, guide }) => {
             y={209 + i * 83}
             w={110}
             h={68}
-            fill={i === page ? palette.yellow : "#ece7d3"}
+            fill={i === page ? palette.yellow : "#192a35"}
             radius={5}
           />
           <Label x={346} y={239 + i * 83} anchor="middle" size={15}>
@@ -343,7 +344,7 @@ const PPTResult: React.FC<{ t: number; guide: boolean }> = ({ t, guide }) => {
           </Label>
           <path
             d={`M307 ${253 + i * 83}h78m-78 7h53`}
-            stroke="#aa9978"
+            stroke="#5a7181"
             strokeWidth="2"
           />
         </g>
@@ -546,12 +547,8 @@ const Chapter: React.FC<{ scene: (typeof scenes)[number] }> = ({ scene }) => {
   );
   return (
     <AbsoluteFill style={{ background: palette.paper }}>
-      <svg
-        viewBox="0 0 1280 720"
-        width="100%"
-        height="100%"
-        style={{ filter: "grayscale(1)" }}
-      >
+      <svg viewBox="0 0 1280 720" width="100%" height="100%">
+        <SceneBackdrop id={id} t={t} />
         <g
           opacity={fade}
           transform={`translate(${(1 - smooth(t, 0, 0.5)) * 25} 0)`}
@@ -562,8 +559,17 @@ const Chapter: React.FC<{ scene: (typeof scenes)[number] }> = ({ scene }) => {
           <Label x={1237} y={43} size={13} fill={palette.muted} anchor="end">
             IT SUMMIT / AI WORKFLOW
           </Label>
-          <path d="M43 59h1194" stroke="#353a40" strokeWidth="1" />
-          <Label x={45} y={112} size={34} weight={600}>
+          <path d="M43 59h1194" stroke="#2b3c48" strokeWidth="1" />
+          <path d="M43 59h250" stroke="url(#accentEdge)" strokeWidth="2" />
+          <rect
+            x={45}
+            y={80}
+            width={4}
+            height={34}
+            rx={2}
+            fill={palette.orange}
+          />
+          <Label x={63} y={112} size={34} weight={600}>
             {titles[id - 1]}
           </Label>
 
@@ -601,17 +607,42 @@ const Chapter: React.FC<{ scene: (typeof scenes)[number] }> = ({ scene }) => {
                 "审核与日志",
               ].map((v, i) => (
                 <g key={v}>
-                  <InkBox
-                    x={60}
-                    y={218 + i * 53}
-                    w={180}
-                    h={41}
+                  {i ===
+                    (id === 5 ? 2 : id === 6 ? 3 : id === 7 ? 4 : id - 2) && (
+                    <rect
+                      x={60}
+                      y={218 + i * 53}
+                      width={180}
+                      height={41}
+                      rx={9}
+                      fill="#173441"
+                      stroke="#315765"
+                    />
+                  )}
+                  <Label
+                    x={74}
+                    y={245 + i * 53}
+                    size={12}
                     fill={
-                      i === Math.min(4, id - 2) ? palette.yellow : palette.paper
+                      i ===
+                      (id === 5 ? 2 : id === 6 ? 3 : id === 7 ? 4 : id - 2)
+                        ? palette.orange
+                        : "#526c7a"
                     }
-                    radius={6}
-                  />
-                  <Label x={79} y={246 + i * 53} size={18}>
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </Label>
+                  <Label
+                    x={101}
+                    y={246 + i * 53}
+                    size={17}
+                    fill={
+                      i ===
+                      (id === 5 ? 2 : id === 6 ? 3 : id === 7 ? 4 : id - 2)
+                        ? "#e6f3f8"
+                        : "#8ba0ad"
+                    }
+                  >
                     {v}
                   </Label>
                 </g>
@@ -761,7 +792,9 @@ const Chapter: React.FC<{ scene: (typeof scenes)[number] }> = ({ scene }) => {
                 y={156}
                 width={1190}
                 height={448}
-                fill={palette.paper}
+                rx={18}
+                fill="#0c141c"
+                stroke="#1a2d38"
               />
               {[
                 "数据整理",
@@ -775,20 +808,67 @@ const Chapter: React.FC<{ scene: (typeof scenes)[number] }> = ({ scene }) => {
                   key={name}
                   opacity={smooth(t, 7.3 + i * 0.13, 7.8 + i * 0.13)}
                 >
-                  <IconAsset
-                    index={i}
-                    x={255 + (i % 3) * 382}
-                    y={270 + Math.floor(i / 3) * 200}
-                    size={175}
+                  <InkBox
+                    x={68 + (i % 3) * 382}
+                    y={176 + Math.floor(i / 3) * 200}
+                    w={350}
+                    h={181}
+                    fill="#121e28"
+                    radius={17}
                   />
                   <Label
-                    x={255 + (i % 3) * 382}
-                    y={365 + Math.floor(i / 3) * 200}
+                    x={91 + (i % 3) * 382}
+                    y={206 + Math.floor(i / 3) * 200}
+                    size={11}
+                    fill={palette.orange}
+                  >
+                    {
+                      [
+                        "DATA / 01",
+                        "LEARNING / 02",
+                        "VIDEO / 03",
+                        "DESIGN / 04",
+                        "CONTROL / 05",
+                        "AGENT / 06",
+                      ][i]
+                    }
+                  </Label>
+                  <Label
+                    x={91 + (i % 3) * 382}
+                    y={256 + Math.floor(i / 3) * 200}
                     size={23}
-                    anchor="middle"
+                    weight={600}
                   >
                     {name}
                   </Label>
+                  <Label
+                    x={91 + (i % 3) * 382}
+                    y={283 + Math.floor(i / 3) * 200}
+                    size={12}
+                    fill={palette.muted}
+                  >
+                    {
+                      [
+                        "从台账到洞察",
+                        "从问题到教程",
+                        "从方案到演示",
+                        "从需求到视觉",
+                        "从授权到追踪",
+                        "从指令到交付",
+                      ][i]
+                    }
+                  </Label>
+                  <IconAsset
+                    index={i}
+                    x={339 + (i % 3) * 382}
+                    y={262 + Math.floor(i / 3) * 200}
+                    size={127}
+                  />
+                  <path
+                    d={`M${91 + (i % 3) * 382} ${330 + Math.floor(i / 3) * 200}h${70 + smooth(t, 7.3, 8.5) * 225}`}
+                    stroke="url(#accentEdge)"
+                    strokeWidth="1.5"
+                  />
                 </g>
               ))}
             </g>
@@ -800,9 +880,10 @@ const Chapter: React.FC<{ scene: (typeof scenes)[number] }> = ({ scene }) => {
                 y={127}
                 width={1280}
                 height={483}
-                fill={palette.paper}
+                fill="url(#sceneBackground)"
               />
               <AIInputPanel t={t} text={prompts[id - 1]} clear={false} />
+              <InputDetails />
             </g>
           )}
 
@@ -810,7 +891,7 @@ const Chapter: React.FC<{ scene: (typeof scenes)[number] }> = ({ scene }) => {
             <Cursor x={868} y={494} click />
           )}
         </g>
-        <path d="M45 627h1190" stroke="#d7ccac" />
+        <path d="M45 627h1190" stroke="#314551" />
         {scenes.map((s, i) => (
           <g key={s.id}>
             <circle
@@ -822,7 +903,7 @@ const Chapter: React.FC<{ scene: (typeof scenes)[number] }> = ({ scene }) => {
                   ? palette.orange
                   : s.id < id
                     ? palette.mint
-                    : "#dfd4b9"
+                    : "#6e8796"
               }
             />
             <Label

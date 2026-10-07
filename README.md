@@ -57,3 +57,7 @@ public/icons/it-metal-sprite-v2.png 为 imagegen 生成的 1536×1024 透明 PNG
 ## BGM 混音
 
 大会主片已换为 Almost in F / Kevin MacLeod 的轻柔氛围配乐（CC BY 4.0）。完整来源与署名见 public/audio/CREDITS.txt，片尾也含署名。public/audio/it-summit-ambient-ducked.wav 已按已确认配音预烘焙自动降音量、2 kHz 避让和首尾淡化；更换配音后需重新生成 ducking。配音与章节时长保持不变。
+
+## 大会界面设计修订
+
+新增 src/VisualTheme.tsx：低对比网格、缓慢仪表线、黑蓝渐变和冷青色强调。开场采用图文卡片，输入页含任务标签和三步流程，工作台采用带序号的高亮导航；内容与字幕时序不变。最终视觉修订成片沿用上一版舒缓配乐成片的完整音轨，避免改变已调整混音。
