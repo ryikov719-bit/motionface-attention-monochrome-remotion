@@ -1,3 +1,10 @@
+Music: "Almost in F" by Kevin MacLeod (incompetech.com)
+Source: https://incompetech.com/music/royalty-free/index.html?Search=Search&isrc=USUAN1100394
+Licensed under Creative Commons Attribution 4.0:
+https://creativecommons.org/licenses/by/4.0/
+Changes: excerpt from 30 s, EQ, volume reduction, narration-driven ducking, fade-in and fade-out.
+
+Previous revision (not used in latest composition):
 Music: "Cipher" by Kevin MacLeod (incompetech.com)
 Source: https://incompetech.com/music/royalty-free/index.html?Search=Search&isrc=USUAN1100844
 Download: https://incompetech.com/music/royalty-free/mp3-royaltyfree/Cipher2.mp3

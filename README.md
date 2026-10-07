@@ -56,4 +56,4 @@ public/icons/it-metal-sprite-v2.png 为 imagegen 生成的 1536×1024 透明 PNG
 
 ## BGM 混音
 
-大会主片已加入 Cipher / Kevin MacLeod 的无歌词电子配乐（CC BY 3.0）。完整来源与署名见 public/audio/CREDITS.txt，片尾也含署名。public/audio/it-summit-bgm-ducked.wav 已按已确认配音预烘焙自动降音量、2.2 kHz 避让和首尾淡化；更换配音后需重新生成 ducking。配音与章节时长保持不变。
+大会主片已换为 Almost in F / Kevin MacLeod 的轻柔氛围配乐（CC BY 4.0）。完整来源与署名见 public/audio/CREDITS.txt，片尾也含署名。public/audio/it-summit-ambient-ducked.wav 已按已确认配音预烘焙自动降音量、2 kHz 避让和首尾淡化；更换配音后需重新生成 ducking。配音与章节时长保持不变。

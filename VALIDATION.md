@@ -22,3 +22,7 @@
 ## BGM 更新
 
 采用已核实来源的 Cipher / Kevin MacLeod（CC BY 3.0），剪辑、EQ、自动 ducking 和淡入淡出均记于 public/audio/mix-record.json。人声、字幕和 128.2 秒章节时间不变，片尾及 public/audio/CREDITS.txt 保留署名。Remotion lint 和 build 通过。
+
+## 舒缓配乐修订
+
+因用户反馈电子配乐过吵，替换为 Almost in F / Kevin MacLeod（CC BY 4.0），原人声不变。背景音轨约 -42.5 LUFS，比上一版约低 10 dB；配乐去低频轰鸣、限制高频、2 kHz 避让及缓慢 ducking，128.2 秒版本全片解码通过。Remotion lint/build 通过，音乐署名更新为 4.0。

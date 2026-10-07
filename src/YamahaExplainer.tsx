@@ -858,7 +858,7 @@ const Chapter: React.FC<{ scene: (typeof scenes)[number] }> = ({ scene }) => {
 export const YamahaMonochrome: React.FC = () => (
   <AbsoluteFill>
     <FontStyles />
-    <Audio src={staticFile("audio/it-summit-bgm-ducked.wav")} />
+    <Audio src={staticFile("audio/it-summit-ambient-ducked.wav")} />
     {scenes.map((scene) => (
       <Sequence
         key={scene.id}
@@ -880,10 +880,10 @@ export const YamahaMonochrome: React.FC = () => (
         style={{ position: "absolute", pointerEvents: "none" }}
       >
         <Label x={1237} y={78} size={9} fill="#aeb3b9" anchor="end">
-          Music: Cipher — Kevin MacLeod (incompetech.com)
+          Music: Almost in F — Kevin MacLeod (incompetech.com)
         </Label>
         <Label x={1237} y={90} size={9} fill="#aeb3b9" anchor="end">
-          CC BY 3.0 · creativecommons.org/licenses/by/3.0/
+          CC BY 4.0 · creativecommons.org/licenses/by/4.0/
         </Label>
       </svg>
     </Sequence>
