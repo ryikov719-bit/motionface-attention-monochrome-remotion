@@ -1,0 +1,50 @@
+[
+  {
+    "name": "data",
+    "index": 0,
+    "x": 0,
+    "y": 0,
+    "width": 512,
+    "height": 512
+  },
+  {
+    "name": "presentation",
+    "index": 1,
+    "x": 512,
+    "y": 0,
+    "width": 512,
+    "height": 512
+  },
+  {
+    "name": "video",
+    "index": 2,
+    "x": 1024,
+    "y": 0,
+    "width": 512,
+    "height": 512
+  },
+  {
+    "name": "poster",
+    "index": 3,
+    "x": 0,
+    "y": 512,
+    "width": 512,
+    "height": 512
+  },
+  {
+    "name": "security",
+    "index": 4,
+    "x": 512,
+    "y": 512,
+    "width": 512,
+    "height": 512
+  },
+  {
+    "name": "ai-dialog",
+    "index": 5,
+    "x": 1024,
+    "y": 512,
+    "width": 512,
+    "height": 512
+  }
+]
