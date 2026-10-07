@@ -48,7 +48,7 @@ export const InkBox: React.FC<{
     <g>
       <defs>
         <linearGradient id={id} x2=".8" y2="1">
-          <stop stopColor="#404347" />
+          <stop stopColor="#25292e" />
           <stop offset=".32" stopColor={normalized} />
           <stop offset="1" stopColor="#101112" />
         </linearGradient>
@@ -60,14 +60,14 @@ export const InkBox: React.FC<{
         height={h}
         rx={radius}
         fill={`url(#${id})`}
-        stroke="#686c70"
-        strokeWidth={1.2}
+        stroke="#3b4147"
+        strokeWidth={0.7}
       />
       <path
         d={`M${x + radius} ${y + 1}h${w - radius * 2}`}
-        stroke="#b4b7b9"
+        stroke="#7c858e"
         strokeWidth=".7"
-        opacity=".5"
+        opacity=".25"
       />
       {children}
     </g>

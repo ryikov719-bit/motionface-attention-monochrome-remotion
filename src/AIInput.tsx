@@ -1,14 +1,6 @@
 import React from "react";
 import { AbsoluteFill, interpolate, useCurrentFrame } from "remotion";
-import {
-  Buddy,
-  FontStyles,
-  InkBox,
-  Label,
-  palette,
-  progress,
-  Star,
-} from "./design";
+import { FontStyles, InkBox, Label, palette, progress, Star } from "./design";
 
 export const AIInputPanel: React.FC<{
   t: number;
@@ -154,7 +146,6 @@ export const AIInputPanel: React.FC<{
           )}
         </g>
       )}
-      {!reference && <Buddy x={1137} y={379} t={t} scale={0.8} />}
     </g>
   );
 };

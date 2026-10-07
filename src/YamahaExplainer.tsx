@@ -5,7 +5,6 @@ import { Audio } from "@remotion/media";
 import { AbsoluteFill, Sequence, staticFile, useCurrentFrame } from "remotion";
 import scenes from "./yamaha-scenes.json";
 import {
-  Buddy,
   FontStyles,
   InkBox,
   Label,
@@ -70,17 +69,12 @@ const FileCard: React.FC<{
 }> = ({ name, type, x = 322, y = 443 }) => (
   <g>
     <InkBox x={x} y={y} w={566} h={91} fill="#191b1d" radius={9} />
-    <InkBox
-      x={x + 15}
-      y={y + 14}
-      w={61}
-      h={62}
-      fill={type === "PPT" ? palette.orange : palette.mint}
-      radius={8}
+    <IconAsset
+      index={type === "PPT" ? 1 : type === "IMG" ? 3 : 0}
+      x={x + 45}
+      y={y + 45}
+      size={75}
     />
-    <Label x={x + 45} y={y + 55} size={22} fill="#dedede" anchor="middle">
-      {type}
-    </Label>
     <Label x={x + 96} y={y + 37} size={22}>
       {name}
     </Label>
@@ -494,7 +488,6 @@ const VideoResult: React.FC<{ t: number }> = ({ t }) => (
       stroke={palette.orange}
       strokeWidth="2"
     />
-    <Buddy x={800} y={461} t={t} scale={0.65} />
   </g>
 );
 const PosterResult: React.FC<{ t: number }> = ({ t }) => (
@@ -567,13 +560,13 @@ const Chapter: React.FC<{ scene: (typeof scenes)[number] }> = ({ scene }) => {
             雅马哈 IT 担当者大会 · AI 智能体科普
           </Label>
           <Label x={1237} y={43} size={13} fill={palette.muted} anchor="end">
-            示例界面 · PAPER MOTION
+            IT SUMMIT / AI WORKFLOW
           </Label>
-          <path d="M43 59h1194" stroke={palette.ink} strokeWidth="2" />
-          <Label x={45} y={112} size={38} weight={700}>
+          <path d="M43 59h1194" stroke="#353a40" strokeWidth="1" />
+          <Label x={45} y={112} size={34} weight={600}>
             {titles[id - 1]}
           </Label>
-          <Star x={1199} y={94} s={14} />
+
           {id >= 2 && id <= 7 && (
             <IconAsset
               index={
@@ -669,7 +662,6 @@ const Chapter: React.FC<{ scene: (typeof scenes)[number] }> = ({ scene }) => {
                   需求 → 视频与海报
                 </Label>
               </g>
-              <Buddy x={760} y={530} t={t} scale={1.1} />
             </>
           ) : id === 8 ? (
             <>
@@ -694,7 +686,6 @@ const Chapter: React.FC<{ scene: (typeof scenes)[number] }> = ({ scene }) => {
               <Label x={107} y={527} size={31}>
                 从一个具体任务开始，让智能体承担重复步骤。
               </Label>
-              <Buddy x={1139} y={499} t={t} scale={1.1} />
             </>
           ) : id === 7 && t > 7 ? (
             <>
@@ -814,15 +805,7 @@ const Chapter: React.FC<{ scene: (typeof scenes)[number] }> = ({ scene }) => {
               <AIInputPanel t={t} text={prompts[id - 1]} clear={false} />
             </g>
           )}
-          {id >= 2 && id <= 7 && (t >= 4.35 || id === 7) && (
-            <Buddy
-              x={1173}
-              y={515}
-              t={t}
-              scale={1.0}
-              glasses={id === 5 && t > 13}
-            />
-          )}
+
           {id >= 2 && id <= 6 && t > 8.5 && t < 9.5 && (
             <Cursor x={868} y={494} click />
           )}
@@ -860,15 +843,10 @@ const Chapter: React.FC<{ scene: (typeof scenes)[number] }> = ({ scene }) => {
               width={1190}
               height={40}
               rx={9}
-              fill={palette.ink}
+              fill="#101216"
+              stroke="#292d32"
             />
-            <Label
-              x={640}
-              y={695}
-              size={22}
-              fill={palette.paper}
-              anchor="middle"
-            >
+            <Label x={640} y={695} size={22} fill="#e7e9ec" anchor="middle">
               {caption.text}
             </Label>
           </>

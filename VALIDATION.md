@@ -10,4 +10,8 @@
 - YAML/JSON/源码中未包含绑定 token 或下载签名。
 - npm audit 的 10 个 high 来自 ESLint 开发依赖 braces 链，无上游自动修复版本；未进行不兼容强制升级。
 
-主片全片解码、公开仓库与绑定结果将进一步记录。
+- 精修 UI：收细边框、统一石墨灰字幕和大会页眉，移除漂浮角色；检查开场图标、输入界面及 PPT 结果帧。
+- 精修图标：使用 imagegen v2 原始 RGBA 素材，保持 1536×1024 和六类任务布局。
+- 参考动效全片 FFmpeg 解码通过。
+- GitHub 仓库已创建，公开状态及最终提交将于推送后核对。
+- MotionFace 绑定 HTTP 200，响应 recording_id 为 772dd12b-cd28-4635-a41d-207f9939c0a4，github_url 为 https://github.com/ryikov719-bit/motionface-attention-monochrome-remotion，逐项匹配成功。
