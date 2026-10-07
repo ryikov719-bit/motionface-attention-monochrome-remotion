@@ -53,7 +53,7 @@ export const AIInputPanel: React.FC<{
           w={902}
           h={157}
           radius={19}
-          fill="#191b1d"
+          fill="#f0f1ea"
           strokeWidth={3}
         />
       )}
@@ -74,26 +74,26 @@ export const AIInputPanel: React.FC<{
             cx={220 + i * 37}
             cy={385}
             r={14}
-            fill={reference ? "#dedede" : "#22262b"}
-            stroke={reference ? "#e1e1df" : "#454c54"}
+            fill={reference ? "#dedede" : "#edf0e6"}
+            stroke={reference ? "#e1e1df" : "#d5ddcc"}
             strokeWidth={reference ? 1.8 : 2}
           />
           {i === 0 ? (
-            <path d="M216 385h8m-4-4v8" stroke="#b9bec5" />
+            <path d="M216 385h8m-4-4v8" stroke="#899c7e" />
           ) : i === 1 ? (
             <>
               <path
                 d="M253 381h8m-8 4h8m-8 4h8m-5-9v2m3 2v2m-5 2v2"
-                stroke="#b9bec5"
+                stroke="#899c7e"
               />
             </>
           ) : (
             <>
-              <circle cx="294" cy="385" r="4.5" fill="none" stroke="#b9bec5" />
+              <circle cx="294" cy="385" r="4.5" fill="none" stroke="#899c7e" />
               <path
                 d="M290 385h8m-4-5q-3 5 0 10m0-10q3 5 0 10"
                 fill="none"
-                stroke="#b9bec5"
+                stroke="#899c7e"
               />
             </>
           )}
@@ -105,14 +105,14 @@ export const AIInputPanel: React.FC<{
         width={reference ? 138 : 154}
         height={28}
         rx={14}
-        fill={reference ? "#dedede" : "#22262b"}
-        stroke={reference ? "#e1e1df" : "#454c54"}
+        fill={reference ? "#dedede" : "#edf0e6"}
+        stroke={reference ? "#e1e1df" : "#d5ddcc"}
         strokeWidth={reference ? 1 : 1.8}
       />
       <text
         x={330}
         y={390}
-        fill="#d3d7dc"
+        fill="#56634e"
         fontSize={reference ? 12 : 15}
         fontWeight={reference ? 700 : 400}
       >

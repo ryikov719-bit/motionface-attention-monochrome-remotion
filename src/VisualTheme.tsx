@@ -12,41 +12,25 @@ export const SceneBackdrop: React.FC<{ id: number; t: number }> = ({
         cy=".25"
         r=".9"
       >
-        <stop stopColor="#142833" />
-        <stop offset=".5" stopColor="#0c141c" />
-        <stop offset="1" stopColor="#080b10" />
+        <stop stopColor="#fafbf5" />
+        <stop offset="1" stopColor="#f5f3ee" />
       </radialGradient>
-      <pattern
-        id="precisionGrid"
-        width="40"
-        height="40"
-        patternUnits="userSpaceOnUse"
-      >
-        <path
-          d="M40 0H0V40"
-          fill="none"
-          stroke="#7993a1"
-          strokeWidth=".35"
-          opacity=".1"
-        />
-      </pattern>
       <linearGradient id="accentEdge">
-        <stop stopColor="#64d7e8" />
-        <stop offset="1" stopColor="#64d7e8" stopOpacity="0" />
+        <stop stopColor="#95ad89" />
+        <stop offset="1" stopColor="#95ad89" stopOpacity="0" />
       </linearGradient>
     </defs>
     <rect width="1280" height="720" fill="url(#sceneBackground)" />
-    <rect width="1280" height="626" fill="url(#precisionGrid)" />
-    <g transform={`translate(1130 365) rotate(${t * 1.4})`} opacity=".12">
-      <circle r="258" stroke="#78adbf" strokeWidth=".6" fill="none" />
-      <circle
-        r="238"
-        stroke="#78adbf"
-        strokeWidth=".5"
-        strokeDasharray="2 14"
-        fill="none"
-      />
-      <path d="M-280 0h560M0-280v560" stroke="#78adbf" strokeWidth=".5" />
+    <g
+      fill="none"
+      stroke="#a9b7a0"
+      strokeWidth=".8"
+      opacity=".16"
+      transform={`translate(0 ${Math.sin(t * 0.25) * 2})`}
+    >
+      <path d="M70 140v330q0 20 20 20h160M1210 170v300q0 20-20 20h-150" />
+      <circle cx="70" cy="140" r="3" />
+      <circle cx="1210" cy="170" r="3" />
     </g>
   </>
 );
@@ -63,33 +47,34 @@ export const InputDetails: React.FC = () => (
           width={250}
           height={34}
           rx={17}
-          fill="#111d26"
-          stroke="#294350"
+          fill={["#e4eddc", "#e5dff0", "#f0e7c8"][i]}
+          stroke="#fff"
         />
         <circle cx={229 + i * 275} cy={462} r={3} fill={palette.orange} />
-        <Label x={243 + i * 275} y={468} size={13} fill="#b2c4cf">
+        <Label x={243 + i * 275} y={468} size={13} fill="#6c7961">
           {text}
         </Label>
+        <path
+          d={`M${335 + i * 275} 479v13q0 12 ${i === 0 ? 12 : i === 2 ? -12 : 0} 12H640v17`}
+          fill="none"
+          stroke="#a9baa0"
+          strokeWidth="1"
+        />
       </g>
     ))}
-    {["01 理解需求", "02 制定计划", "03 交付成品"].map((text, i) => (
-      <g key={text}>
-        <Label
-          x={230 + i * 310}
-          y={540}
-          size={15}
-          fill={i === 0 ? palette.orange : "#68818f"}
-        >
-          {text}
-        </Label>
-        {i < 2 && (
-          <path
-            d={`M${365 + i * 310} 533h100m-5-4l5 4-5 4`}
-            fill="none"
-            stroke="#395361"
-          />
-        )}
-      </g>
-    ))}
+    <rect
+      x={530}
+      y={521}
+      width={220}
+      height={50}
+      rx={14}
+      fill="#e4eddc"
+      stroke="#fff"
+      strokeWidth="1.5"
+    />
+    <Label x={640} y={552} size={19} weight={600} anchor="middle">
+      AI 智能体 · 任务中枢
+    </Label>
+    <circle cx="640" cy="521" r="3" fill="#a9bd98" />
   </g>
 );

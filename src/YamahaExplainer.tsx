@@ -1,3 +1,4 @@
+import { SoftArtwork } from "./SoftArtwork";
 import { SceneBackdrop, InputDetails } from "./VisualTheme";
 import { IconAsset } from "./IconAsset";
 import { AIInputPanel } from "./AIInput";
@@ -69,7 +70,7 @@ const FileCard: React.FC<{
   y?: number;
 }> = ({ name, type, x = 322, y = 443 }) => (
   <g>
-    <InkBox x={x} y={y} w={566} h={91} fill="#191b1d" radius={9} />
+    <InkBox x={x} y={y} w={566} h={91} fill="#f0f1ea" radius={9} />
     <IconAsset
       index={type === "PPT" ? 1 : type === "IMG" ? 3 : 0}
       x={x + 45}
@@ -95,7 +96,7 @@ const Chat: React.FC<{ id: number; t: number }> = ({ id, t }) => {
   );
   return (
     <g>
-      <InkBox x={292} y={160} w={786} h={438} fill="#191b1d" radius={12} />
+      <InkBox x={292} y={160} w={786} h={438} fill="#f0f1ea" radius={12} />
       <Label x={319} y={192} size={20}>
         AI 工作助手
       </Label>
@@ -103,8 +104,8 @@ const Chat: React.FC<{ id: number; t: number }> = ({ id, t }) => {
       <Label x={1048} y={190} size={13} anchor="end" fill={palette.muted}>
         示例界面
       </Label>
-      <path d="M312 206h746" stroke="#44474a" />
-      <InkBox x={318} y={228} w={734} h={79} fill="#202326" />
+      <path d="M312 206h746" stroke="#aebba6" />
+      <InkBox x={318} y={228} w={734} h={79} fill="#ecede7" />
       <Label x={337} y={260} size={21}>
         {typed.slice(0, 27)}
       </Label>
@@ -128,7 +129,7 @@ const Chat: React.FC<{ id: number; t: number }> = ({ id, t }) => {
                 y={361}
                 w={222}
                 h={56}
-                fill={[palette.yellow, "#253034", "#292c34"][i]}
+                fill={[palette.yellow, "#e5eade", "#e1dded"][i]}
                 radius={8}
               />
               <Label x={445 + i * 239} y={395} size={17} anchor="middle">
@@ -170,14 +171,14 @@ const Chat: React.FC<{ id: number; t: number }> = ({ id, t }) => {
 
 const DataResult: React.FC<{ t: number }> = ({ t }) => (
   <g>
-    <InkBox x={284} y={150} w={834} h={449} fill="#191b1d" />
+    <InkBox x={284} y={150} w={834} h={449} fill="#f0f1ea" />
     <Label x={310} y={185} size={23}>
       设备台账汇总.xlsx
     </Label>
     <Label x={1087} y={184} anchor="end" size={16}>
       ✓ 校验完成
     </Label>
-    <path d="M304 199h792" stroke="#536b79" />
+    <path d="M304 199h792" stroke="#b1bda6" />
     {["设备清单", "汇总图表", "异常记录"].map((v, i) => (
       <g key={v}>
         <InkBox
@@ -197,7 +198,7 @@ const DataResult: React.FC<{ t: number }> = ({ t }) => (
     ))}
     {t < 11 ? (
       <>
-        <rect x="306" y="256" width="790" height="37" fill="#282b2e" />
+        <rect x="306" y="256" width="790" height="37" fill="#eee9dc" />
         {["部门", "设备类型", "数量", "购入年份", "校验结果"].map((v, i) => (
           <Label key={v} x={320 + i * 153} y={281} size={17}>
             {v}
@@ -211,7 +212,7 @@ const DataResult: React.FC<{ t: number }> = ({ t }) => (
                 y={300 + i * 44}
                 width={790}
                 height={40}
-                fill={i === 2 ? "#34312b" : i % 2 ? "#1c2024" : "#191b1d"}
+                fill={i === 2 ? "#ece4cb" : i % 2 ? "#edf0e8" : "#f0f1ea"}
               />
               <Label x={320} y={327 + i * 44} size={17}>
                 {v}
@@ -229,7 +230,7 @@ const DataResult: React.FC<{ t: number }> = ({ t }) => (
                 x={932}
                 y={327 + i * 44}
                 size={17}
-                fill={i === 2 ? palette.orange : "#488d75"}
+                fill={i === 2 ? palette.orange : "#839b79"}
               >
                 {i === 2 ? "重复 · 待确认" : "✓ 正常"}
               </Label>
@@ -246,7 +247,7 @@ const DataResult: React.FC<{ t: number }> = ({ t }) => (
               y={261}
               w={245}
               h={89}
-              fill={[palette.yellow, "#253034", "#302929"][i]}
+              fill={[palette.yellow, "#e5eade", "#efdfdc"][i]}
             />
             <Label x={326 + i * 263} y={288} size={16}>
               {v}
@@ -285,7 +286,7 @@ const DataResult: React.FC<{ t: number }> = ({ t }) => (
                 y={314 + i * 62}
                 w={747}
                 h={48}
-                fill={i === 0 ? "#302929" : palette.paper}
+                fill={i === 0 ? "#efdfdc" : palette.paper}
               />
               <Label x={340} y={345 + i * 62} size={20}>
                 {v}
@@ -321,14 +322,14 @@ const PPTResult: React.FC<{ t: number; guide: boolean }> = ({ t, guide }) => {
       ][page];
   return (
     <g>
-      <InkBox x={273} y={143} w={856} h={463} fill="#191b1d" />
+      <InkBox x={273} y={143} w={856} h={463} fill="#f0f1ea" />
       <Label x={293} y={176} size={19}>
         {guide ? "企业微信新同事培训.pptx" : "IT 工作汇报.pptx"}
       </Label>
       <Label x={1108} y={176} size={16} anchor="end">
         {page + 1} / {guide ? 10 : 8} 页 · 初稿
       </Label>
-      <path d="M291 190h820" stroke="#597383" />
+      <path d="M291 190h820" stroke="#b9c2ae" />
       {[0, 1, 2, 3].map((i) => (
         <g key={i}>
           <InkBox
@@ -354,7 +355,7 @@ const PPTResult: React.FC<{ t: number; guide: boolean }> = ({ t, guide }) => {
         y={207}
         w={682}
         h={365}
-        fill={page === 0 ? "#242627" : "#191b1d"}
+        fill={page === 0 ? "#e7ecdf" : "#f0f1ea"}
         radius={4}
       />
       <Label x={452} y={254} size={31} weight={700}>
@@ -363,14 +364,7 @@ const PPTResult: React.FC<{ t: number; guide: boolean }> = ({ t, guide }) => {
       <path d="M452 271h625" stroke={palette.orange} strokeWidth="4" />
       {page === 0 ? (
         <>
-          <image
-            href={staticFile("yamaha/training.png")}
-            x="452"
-            y="291"
-            width="370"
-            height="235"
-            preserveAspectRatio="xMidYMid slice"
-          />
+          <SoftArtwork variant="training" x={452} y={291} w={370} h={235} />
           <InkBox x={843} y={310} w={231} h={161} fill={palette.mint} />
           <Label x={863} y={346} size={22}>
             {guide ? "15 分钟快速上手" : "从简报到表达"}
@@ -404,7 +398,7 @@ const PPTResult: React.FC<{ t: number; guide: boolean }> = ({ t, guide }) => {
               </Label>
             </g>
           ))}
-          <InkBox x={882} y={301} w={194} h={199} fill="#253034" />
+          <InkBox x={882} y={301} w={194} h={199} fill="#e5eade" />
           <Label x={904} y={332} size={17}>
             操作示例
           </Label>
@@ -414,13 +408,13 @@ const PPTResult: React.FC<{ t: number; guide: boolean }> = ({ t, guide }) => {
             width="162"
             height="129"
             rx="7"
-            fill="#191b1d"
+            fill="#f0f1ea"
             stroke={palette.ink}
           />
-          <rect x="898" y="347" width="42" height="127" fill="#636b71" />
+          <rect x="898" y="347" width="42" height="127" fill="#9aa68c" />
           <path
             d="M950 365h93m-93 24h73m-73 24h83m-83 24h51"
-            stroke="#747b80"
+            stroke="#8e9d84"
             strokeWidth="8"
           />
           <Cursor x={1025} y={415} click />
@@ -435,7 +429,7 @@ const PPTResult: React.FC<{ t: number; guide: boolean }> = ({ t, guide }) => {
 };
 const VideoResult: React.FC<{ t: number }> = ({ t }) => (
   <g>
-    <InkBox x={275} y={143} w={856} h={463} fill="#191b1d" />
+    <InkBox x={275} y={143} w={856} h={463} fill="#f0f1ea" />
     <Label x={299} y={179} size={22}>
       IT 汇报演示视频 · 分镜与字幕
     </Label>
@@ -443,15 +437,8 @@ const VideoResult: React.FC<{ t: number }> = ({ t }) => (
     <Label x={1029} y={179} anchor="middle" size={16}>
       导出演示视频 ↗
     </Label>
-    <image
-      href={staticFile("yamaha/data.png")}
-      x="299"
-      y="203"
-      width="555"
-      height="246"
-      preserveAspectRatio="xMidYMid slice"
-    />
-    <InkBox x={870} y={203} w={238} h={246} fill="#25282b" />
+    <SoftArtwork variant="data" x={299} y={203} w={555} h={246} />
+    <InkBox x={870} y={203} w={238} h={246} fill="#eaeade" />
     <Label x={888} y={236} size={20}>
       分镜清单
     </Label>
@@ -476,12 +463,12 @@ const VideoResult: React.FC<{ t: number }> = ({ t }) => (
         </Label>
       </g>
     ))}
-    <InkBox x={299} y={550} w={804} h={25} fill="#3d424b" radius={4} />
+    <InkBox x={299} y={550} w={804} h={25} fill="#dce4d3" radius={4} />
     {Array.from({ length: 155 }, (_, i) => (
       <path
         key={i}
         d={`M${304 + i * 5} ${561 - Math.abs(Math.sin(i * 3)) * 7}v${Math.abs(Math.sin(i * 3)) * 14}`}
-        stroke="#8c7eb4"
+        stroke="#a59ac5"
       />
     ))}
     <path
@@ -493,29 +480,15 @@ const VideoResult: React.FC<{ t: number }> = ({ t }) => (
 );
 const PosterResult: React.FC<{ t: number }> = ({ t }) => (
   <g>
-    <InkBox x={280} y={143} w={852} h={463} fill="#191b1d" />
+    <InkBox x={280} y={143} w={852} h={463} fill="#f0f1ea" />
     <Label x={302} y={179} size={22}>
       IT 担当者大会 · 视觉物料
     </Label>
     <Label x={1106} y={179} size={16} anchor="end">
       海报 / 通知图 / 会场屏幕
     </Label>
-    <image
-      href={staticFile("yamaha/poster.png")}
-      x="303"
-      y="201"
-      width="232"
-      height="348"
-      preserveAspectRatio="xMidYMid slice"
-    />
-    <image
-      href={staticFile("yamaha/banner.png")}
-      x="559"
-      y="201"
-      width="550"
-      height="309"
-      preserveAspectRatio="xMidYMid slice"
-    />
+    <SoftArtwork variant="poster" x={303} y={201} w={232} h={348} />
+    <SoftArtwork variant="banner" x={559} y={201} w={550} h={309} />
     <InkBox
       x={559}
       y={525}
@@ -528,7 +501,7 @@ const PosterResult: React.FC<{ t: number }> = ({ t }) => (
     </Label>
     {t > 10 && <Cursor x={1058} y={549} click={t < 11} />}
     <Label x={419} y={579} size={16} anchor="middle">
-      AI 生成效果图
+      视觉方案预览
     </Label>
   </g>
 );
@@ -559,7 +532,7 @@ const Chapter: React.FC<{ scene: (typeof scenes)[number] }> = ({ scene }) => {
           <Label x={1237} y={43} size={13} fill={palette.muted} anchor="end">
             IT SUMMIT / AI WORKFLOW
           </Label>
-          <path d="M43 59h1194" stroke="#2b3c48" strokeWidth="1" />
+          <path d="M43 59h1194" stroke="#dce0d4" strokeWidth="1" />
           <path d="M43 59h250" stroke="url(#accentEdge)" strokeWidth="2" />
           <rect
             x={45}
@@ -595,7 +568,7 @@ const Chapter: React.FC<{ scene: (typeof scenes)[number] }> = ({ scene }) => {
           )}
           {id !== 1 && id !== 8 && (
             <>
-              <InkBox x={44} y={159} w={211} h={439} fill="#191c1f" />
+              <InkBox x={44} y={159} w={211} h={439} fill="#f0f1ea" />
               <Label x={64} y={194} size={23}>
                 任务工作台
               </Label>
@@ -615,8 +588,8 @@ const Chapter: React.FC<{ scene: (typeof scenes)[number] }> = ({ scene }) => {
                       width={180}
                       height={41}
                       rx={9}
-                      fill="#173441"
-                      stroke="#315765"
+                      fill="#dce9d5"
+                      stroke="#b0c5a4"
                     />
                   )}
                   <Label
@@ -627,7 +600,7 @@ const Chapter: React.FC<{ scene: (typeof scenes)[number] }> = ({ scene }) => {
                       i ===
                       (id === 5 ? 2 : id === 6 ? 3 : id === 7 ? 4 : id - 2)
                         ? palette.orange
-                        : "#526c7a"
+                        : "#a1aa98"
                     }
                   >
                     {String(i + 1).padStart(2, "0")}
@@ -639,8 +612,8 @@ const Chapter: React.FC<{ scene: (typeof scenes)[number] }> = ({ scene }) => {
                     fill={
                       i ===
                       (id === 5 ? 2 : id === 6 ? 3 : id === 7 ? 4 : id - 2)
-                        ? "#e6f3f8"
-                        : "#8ba0ad"
+                        ? "#354139"
+                        : "#85917c"
                     }
                   >
                     {v}
@@ -657,15 +630,8 @@ const Chapter: React.FC<{ scene: (typeof scenes)[number] }> = ({ scene }) => {
           )}
           {id === 1 ? (
             <>
-              <InkBox x={49} y={166} w={765} h={420} fill="#191b1d" />
-              <image
-                href={staticFile("yamaha/data.png")}
-                x="62"
-                y="179"
-                width="739"
-                height="393"
-                preserveAspectRatio="xMidYMid slice"
-              />
+              <InkBox x={49} y={166} w={765} h={420} fill="#f0f1ea" />
+              <SoftArtwork variant="data" x={62} y={179} w={739} h={393} />
               <g opacity={smooth(t, 2, 3)}>
                 <InkBox x={864} y={170} w={358} h={110} fill={palette.yellow} />
                 <Label x={892} y={218} size={30}>
@@ -685,7 +651,7 @@ const Chapter: React.FC<{ scene: (typeof scenes)[number] }> = ({ scene }) => {
                 </Label>
               </g>
               <g opacity={smooth(t, 5, 6)}>
-                <InkBox x={864} y={438} w={358} h={110} fill="#2f3035" />
+                <InkBox x={864} y={438} w={358} h={110} fill="#e1dcec" />
                 <Label x={892} y={485} size={30}>
                   内容物料
                 </Label>
@@ -696,7 +662,7 @@ const Chapter: React.FC<{ scene: (typeof scenes)[number] }> = ({ scene }) => {
             </>
           ) : id === 8 ? (
             <>
-              <InkBox x={50} y={163} w={1176} h={420} fill="#191b1d" />
+              <InkBox x={50} y={163} w={1176} h={420} fill="#f0f1ea" />
               {["判断", "协作", "改善"].map((v, i) => (
                 <g key={v} opacity={smooth(t, 0.7 + i * 0.65, 1.4 + i * 0.65)}>
                   <InkBox
@@ -720,7 +686,7 @@ const Chapter: React.FC<{ scene: (typeof scenes)[number] }> = ({ scene }) => {
             </>
           ) : id === 7 && t > 7 ? (
             <>
-              <InkBox x={286} y={149} w={845} h={448} fill="#191b1d" />
+              <InkBox x={286} y={149} w={845} h={448} fill="#f0f1ea" />
               <Label x={310} y={187} size={25}>
                 执行前审核
               </Label>
@@ -735,7 +701,7 @@ const Chapter: React.FC<{ scene: (typeof scenes)[number] }> = ({ scene }) => {
                     y={215 + i * 71}
                     w={792}
                     h={55}
-                    fill={["#253034", palette.yellow, "#292c34"][i]}
+                    fill={["#e5eade", palette.yellow, "#e1dded"][i]}
                   />
                   <Label x={332} y={249 + i * 71} size={22}>
                     ✓ {v}
@@ -793,8 +759,8 @@ const Chapter: React.FC<{ scene: (typeof scenes)[number] }> = ({ scene }) => {
                 width={1190}
                 height={448}
                 rx={18}
-                fill="#0c141c"
-                stroke="#1a2d38"
+                fill="#f5f3ee"
+                stroke="#e4e5dc"
               />
               {[
                 "数据整理",
@@ -813,7 +779,7 @@ const Chapter: React.FC<{ scene: (typeof scenes)[number] }> = ({ scene }) => {
                     y={176 + Math.floor(i / 3) * 200}
                     w={350}
                     h={181}
-                    fill="#121e28"
+                    fill="#eef0e8"
                     radius={17}
                   />
                   <Label
@@ -891,7 +857,7 @@ const Chapter: React.FC<{ scene: (typeof scenes)[number] }> = ({ scene }) => {
             <Cursor x={868} y={494} click />
           )}
         </g>
-        <path d="M45 627h1190" stroke="#314551" />
+        <path d="M45 627h1190" stroke="#d7decf" />
         {scenes.map((s, i) => (
           <g key={s.id}>
             <circle
@@ -903,7 +869,7 @@ const Chapter: React.FC<{ scene: (typeof scenes)[number] }> = ({ scene }) => {
                   ? palette.orange
                   : s.id < id
                     ? palette.mint
-                    : "#6e8796"
+                    : "#a2b393"
               }
             />
             <Label
@@ -924,10 +890,10 @@ const Chapter: React.FC<{ scene: (typeof scenes)[number] }> = ({ scene }) => {
               width={1190}
               height={40}
               rx={9}
-              fill="#101216"
-              stroke="#292d32"
+              fill="#eeeFE8"
+              stroke="#e1e5d9"
             />
-            <Label x={640} y={695} size={22} fill="#e7e9ec" anchor="middle">
+            <Label x={640} y={695} size={22} fill="#354139" anchor="middle">
               {caption.text}
             </Label>
           </>

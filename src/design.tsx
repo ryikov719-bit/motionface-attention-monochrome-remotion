@@ -2,14 +2,14 @@ import React from "react";
 import { interpolate, staticFile } from "remotion";
 import { IconAsset } from "./IconAsset";
 export const palette = {
-  paper: "#080b10",
-  ink: "#ededed",
-  orange: "#69d8e8",
-  yellow: "#193642",
-  mint: "#16372d",
-  pink: "#39363a",
-  violet: "#363a40",
-  muted: "#9aadb9",
+  paper: "#f5f3ee",
+  ink: "#354139",
+  orange: "#859d79",
+  yellow: "#ede4c5",
+  mint: "#d8e8d1",
+  pink: "#eadfe7",
+  violet: "#ddd7ec",
+  muted: "#899181",
 };
 export const progress = (t: number, a: number, b: number) =>
   interpolate(t, [a, b], [0, 1], {
@@ -21,7 +21,7 @@ export const smooth = (t: number, a: number, b: number) => {
   return p * p * (3 - 2 * p);
 };
 export const FontStyles = () => (
-  <style>{`@font-face{font-family:CN;src:url('${staticFile("fonts/notosanssc-font.ttf")}')}@font-face{font-family:Paper;src:url('${staticFile("fonts/notosanssc-font.ttf")}')}*{box-sizing:border-box}svg image{filter:grayscale(1)}`}</style>
+  <style>{`@font-face{font-family:CN;src:url('${staticFile("fonts/notosanssc-font.ttf")}')}@font-face{font-family:Paper;src:url('${staticFile("fonts/notosanssc-font.ttf")}')}*{box-sizing:border-box}`}</style>
 );
 export const InkBox: React.FC<{
   x: number;
@@ -40,34 +40,44 @@ export const InkBox: React.FC<{
     (parseInt(fill.slice(1, 3), 16) +
       parseInt(fill.slice(3, 5), 16) +
       parseInt(fill.slice(5, 7), 16)) /
-      3 >
-      130
-      ? "#24282d"
+      3 <
+      115
+      ? "#edf0e8"
       : fill;
   return (
     <g>
       <defs>
         <linearGradient id={id} x2=".8" y2="1">
-          <stop stopColor="#20303c" />
+          <stop stopColor="#ffffff" />
           <stop offset=".32" stopColor={normalized} />
-          <stop offset="1" stopColor="#0d131b" />
+          <stop offset="1" stopColor={normalized} />
         </linearGradient>
+        <filter id={`${id}shadow`} x="-20%" y="-20%" width="140%" height="160%">
+          <feDropShadow
+            dx="0"
+            dy="7"
+            stdDeviation="6"
+            floodColor="#45533e"
+            floodOpacity=".12"
+          />
+        </filter>
       </defs>
       <rect
         x={x}
         y={y}
         width={w}
         height={h}
-        rx={radius}
+        rx={Math.max(radius, 14)}
         fill={`url(#${id})`}
-        stroke="#344954"
-        strokeWidth={0.7}
+        filter={`url(#${id}shadow)`}
+        stroke="#ffffff"
+        strokeWidth={1.4}
       />
       <path
         d={`M${x + radius} ${y + 1}h${w - radius * 2}`}
-        stroke="#7c858e"
+        stroke="#ffffff"
         strokeWidth=".7"
-        opacity=".25"
+        opacity=".8"
       />
       {children}
     </g>

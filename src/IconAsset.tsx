@@ -15,7 +15,7 @@ export const IconAsset: React.FC<{
     style={{ overflow: "hidden" }}
   >
     <image
-      href={staticFile("icons/it-metal-sprite-v2.png")}
+      href={staticFile("icons/it-sage-sprite.png")}
       x="0"
       y="0"
       width="1536"
