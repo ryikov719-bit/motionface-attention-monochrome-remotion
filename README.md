@@ -9,7 +9,14 @@ npm run dev
 npm run render:book
 ```
 
-输出 `out/yamaha-popup-book.mp4`。`npm run lint` 检查代码，`npm run build` 生成 bundle。
+输出 `out/yamaha-popup-book.mp4`。交付版采用 4K 超采样后缩回 1080p：
+
+```bash
+npx remotion render src/index.ts YamahaBook out/yamaha-book-4k.mp4 --scale=2 --codec=h264 --crf=16
+ffmpeg -i out/yamaha-book-4k.mp4 -i public/audio/approved-ambient-mix.m4a -map 0:v:0 -map 1:a:0 -vf scale=1920:1080:flags=lanczos -c:v libx264 -crf 17 -preset slow -c:a copy -t 128.2 -movflags +faststart out/yamaha-popup-book.mp4
+```
+
+需安装 FFmpeg。`npm run lint` 检查代码，`npm run build` 生成 bundle。
 
 参考 [popup-book-constraints](https://github.com/nolangz/popup-book-constraints) 的纸张折叠、立体展开、层次与镜头语言，独立用 Remotion + CSS 3D 实现。未复制参考仓库代码或素材，并非 Three.js 原项目移植。第二个参考仓库 `ygahmd-cell/remotion` 在本次检查时返回 404，未采用其中内容。
 

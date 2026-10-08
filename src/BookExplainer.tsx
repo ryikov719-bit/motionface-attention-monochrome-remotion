@@ -1,5 +1,11 @@
-import React from "react";
-import { AbsoluteFill, staticFile, useCurrentFrame } from "remotion";
+import React, { useEffect, useState } from "react";
+import {
+  AbsoluteFill,
+  continueRender,
+  delayRender,
+  staticFile,
+  useCurrentFrame,
+} from "remotion";
 import { Audio } from "@remotion/media";
 import scenes from "./yamaha-scenes.json";
 import { FontStyles, smooth, progress } from "./design";
@@ -102,25 +108,11 @@ const Pop: React.FC<{
         height: h,
         transformStyle: "preserve-3d",
         transformOrigin: "50% 100%",
-        transform: `translateZ(${z}px) translateY(${(1 - p) * 42}px) rotateX(${(1 - p) * -82}deg) rotateZ(${rot}deg) rotateY(${turn}deg)`,
+        transform: `translateZ(${z}px) translateY(${(1 - p) * 42}px) rotateX(${(1 - p) * -82}deg) rotateZ(${rot * (1 - smooth(t, at + 0.8, at + 1.4))}deg) rotateY(${turn}deg)`,
         opacity: p,
         ...style,
       }}
     >
-      <div
-        style={{
-          position: "absolute",
-          left: "12%",
-          bottom: -13,
-          width: "76%",
-          height: 18,
-          background: "#c6ccb9",
-          transform: "rotateX(65deg)",
-          transformOrigin: "50% 0",
-          borderRadius: 3,
-          opacity: 0.6,
-        }}
-      />
       <div
         style={{
           position: "absolute",
@@ -193,14 +185,14 @@ const Prompt: React.FC<{ id: number; t: number }> = ({ id, t }) => {
       <div style={{ ...tag, marginBottom: 17 }}>AI WORKFLOW / 你的目标</div>
       <div
         style={{
-          fontSize: send > 0.6 ? 18 : 27,
+          fontSize: 27 - send * 9,
           fontWeight: 500,
           lineHeight: 1.55,
           minHeight: 80,
         }}
       >
         {typed}
-        {t < 3.5 && Math.floor(t * 3) % 2 === 0 ? "│" : ""}
+        {t < 3.5 ? <span style={{ color: c.muted }}>│</span> : null}
       </div>
       <div style={{ position: "absolute", left: 20, bottom: 20 }}>
         <Chip>企业 IT 助手</Chip>
@@ -536,7 +528,11 @@ const Data: React.FC<{ t: number }> = ({ t }) => {
   );
 };
 const Training: React.FC<{ t: number }> = ({ t }) => {
-  const page = Math.min(2, Math.max(0, Math.floor((t - 9) / 2.1)));
+  const page = Math.min(2, Math.max(0, Math.floor((t - 9.3) / 2.1)));
+  const flip = [11.1, 13.2].reduce((angle, start) => {
+    const phase = progress(t, start, start + 0.6);
+    return angle - 90 * Math.sin(phase * Math.PI);
+  }, 0);
   const heads = ["登录与通讯录", "群聊与文件协作", "会议与安全规范"];
   return (
     <>
@@ -554,11 +550,7 @@ const Training: React.FC<{ t: number }> = ({ t }) => {
           color={[c.lilac, c.yellow, c.paper][i]}
           fold={1}
           z={i * 16}
-          turn={
-            i === 2 && t > 9
-              ? (1 - smooth(t, 9 + page * 2.1, 9.6 + page * 2.1)) * -55
-              : 0
-          }
+          turn={i === 2 ? flip : 0}
         >
           <div style={tag}>TRAINING / 方案生成 · 10 页</div>
           {i === 2 && (
@@ -626,7 +618,7 @@ const Training: React.FC<{ t: number }> = ({ t }) => {
         </Pop>
       ))}
       {t > 10 && t < 14 && (
-        <Pointer x={1057} y={475} click={Math.floor(t * 2) % 3 === 0} />
+        <Pointer x={1057} y={475} click={t > 11.1 && t < 11.4} />
       )}
     </>
   );
@@ -928,6 +920,15 @@ const Closing: React.FC<{ t: number }> = ({ t }) => (
 );
 const makers = [Intro, Task, Data, Training, Video, Poster, Review, Closing];
 export const BookExplainer: React.FC = () => {
+  const [fontHandle] = useState(() =>
+    delayRender("Load Chinese font before rendering"),
+  );
+  useEffect(() => {
+    document.fonts
+      .load("500 32px CN", "企业微信使用教程培训")
+      .then(() => document.fonts.ready)
+      .then(() => continueRender(fontHandle));
+  }, [fontHandle]);
   const frame = useCurrentFrame(),
     global = frame / 30;
   const scene =
@@ -944,7 +945,7 @@ export const BookExplainer: React.FC = () => {
   const turn = id < 8 ? end : 0;
   const camera =
     smooth(t, 4.3, 6.3) - smooth(t, scene.duration - 2.0, scene.duration - 0.8);
-  const yaw = [-4, 3, -3, 2, -4, 4, -2, 0][id - 1];
+  const yaw = 0;
   const foldOut = 1 - smooth(t, scene.duration - 1.2, scene.duration - 0.6);
   return (
     <AbsoluteFill style={{ background: "#c6bcaa", overflow: "hidden", ...txt }}>
@@ -1018,7 +1019,7 @@ export const BookExplainer: React.FC = () => {
               inset: 0,
               transformStyle: "preserve-3d",
               transformOrigin: "50% 66%",
-              transform: `translateX(${(id % 2 ? 1 : -1) * camera * 14}px) scale(${0.93 + camera * 0.14}) rotateY(${yaw + camera * (id % 2 ? 2 : -2)}deg)`,
+              transform: `translateX(${(id % 2 ? 1 : -1) * camera * 14}px) scale(1) rotateY(${yaw}deg)`,
             }}
           >
             <div
@@ -1051,16 +1052,6 @@ export const BookExplainer: React.FC = () => {
                 boxShadow: "0 6px 0 #dbd4c4",
               }}
             >
-              <div
-                style={{
-                  position: "absolute",
-                  left: "50%",
-                  top: 0,
-                  height: "100%",
-                  width: 1,
-                  background: "#a59d8b66",
-                }}
-              />
               <div
                 style={{
                   position: "absolute",
