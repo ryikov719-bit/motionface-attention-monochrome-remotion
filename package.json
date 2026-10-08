@@ -28,6 +28,7 @@
     "build": "remotion bundle",
     "lint": "eslint src && tsc",
     "render": "remotion render src/index.ts AttentionLandscape out/attention.mp4 --codec=h264 --crf=18",
-    "render:yamaha": "remotion render src/index.ts YamahaMonochrome out/yamaha-monochrome.mp4 --codec=h264 --crf=18"
+    "render:yamaha": "remotion render src/index.ts YamahaMonochrome out/yamaha-monochrome.mp4 --codec=h264 --crf=18",
+    "render:book": "remotion render src/index.ts YamahaBook out/yamaha-popup-book.mp4 --codec=h264 --crf=18"
   }
 }

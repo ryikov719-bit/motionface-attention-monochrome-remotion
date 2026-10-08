@@ -1,3 +1,24 @@
+# 雅马哈 IT 担当者大会 · AI 工作立体书
+
+最新主片选择 **YamahaBook**：1920×1080、30 fps、128.2 秒。以贯穿全片的立体书和连续镜头讲解数据整理、软件培训、PPT/演示视频、海报延展及审核。保留已确认的中文配音与舒缓氛围混音。
+
+```bash
+npm ci
+npm run dev
+# 在 Studio 选择 YamahaBook
+npm run render:book
+```
+
+输出 `out/yamaha-popup-book.mp4`。`npm run lint` 检查代码，`npm run build` 生成 bundle。
+
+参考 [popup-book-constraints](https://github.com/nolangz/popup-book-constraints) 的纸张折叠、立体展开、层次与镜头语言，独立用 Remotion + CSS 3D 实现。未复制参考仓库代码或素材，并非 Three.js 原项目移植。第二个参考仓库 `ygahmd-cell/remotion` 在本次检查时返回 404，未采用其中内容。
+
+`src/BookExplainer.tsx` 为新版主片；`BOOK_SHOT_PLAN.md` 记录逐章动作。所有动画由帧计算，支持确定性定位。`public/icons/it-sage-sprite.png` 是已生成的纸感六类图标，原始透明素材保留。`public/audio/approved-ambient-mix.m4a` 是已确认配音与 Almost in F 的完整混音；音乐署名见 `public/audio/CREDITS.txt`，字体许可见 `public/fonts/`。界面、数据与文件为可编辑的演示示例。
+
+旧版与原参考动效继续保留，以下为历史实现说明。
+
+---
+
 # Attention — Monochrome Motion / 16:9
 
 Remotion 重建 MotionFace 片段 `772dd12b-cd28-4635-a41d-207f9939c0a4`，参考其黑白金属材质、柔光、数字增长、悬浮硬币、收益卡片、转盘和 CREATE TO EARN 收尾，重新构图为 1920×1080 的横版。
